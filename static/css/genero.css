@@ -11,6 +11,7 @@ thead {
 
 td, th {
     border: 1px solid;
+    border-color: black;
     padding: 8px 15px;
 }
 
@@ -25,12 +26,12 @@ form label {
     display: block;
     margin: auto;
     padding: 10px 25px;
-    width: 25%;
+    width: 100%;
     border-radius: 5px;
 }
 
-.enviar {
-    background:#20c997;
+.enviar-button {
+    background: #20c997;
     color: white;
     border: none;
     border-radius: 5px;
@@ -42,4 +43,27 @@ form label {
     color: white;
     background: #00a293;
     transform: scale(1.2);
+}
+
+.conteiner-center {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding-top: 10px;
+    border: solid;
+    border-width: 1px;
+}
+
+.div-conteiner-center {
+    padding-top: 5px;
+    width: 100%;
+}
+
+.errorlist li {
+    background-color: white;
+    color: red;
+}
+
+.errorlist {
+    background-color: white;
 }
