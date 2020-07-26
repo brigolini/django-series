@@ -1,0 +1,45 @@
+table {
+    margin: 30px auto;
+    text-align: center;
+}
+
+thead {
+    background: #20c997;
+    color: white;
+    font-weight: bold;
+}
+
+td, th {
+    border: 1px solid;
+    padding: 8px 15px;
+}
+
+form label {
+    display: block;
+    text-align: center;
+    font-size: 1.3em;
+    padding-bottom: 0.5em;
+}
+
+.input-padrao {
+    display: block;
+    margin: auto;
+    padding: 10px 25px;
+    width: 25%;
+    border-radius: 5px;
+}
+
+.enviar {
+    background:#20c997;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-size: 1em;
+}
+
+.enviar:hover {
+    color: white;
+    background: #00a293;
+    transform: scale(1.2);
+}
