@@ -15,6 +15,7 @@
 <main>
     <div class="conteiner-center">
         <span>
+            {% if genero_records %}
         <table>
             <thead>
             <tr>
@@ -25,24 +26,19 @@
             </thead>
 
             <tbody>
+            {% for genero in genero_records %}
             <tr>
-                <td>Aventura</td>
+                <td>{{genero.descricao}}</td>
                 <td>Alterar</td>
                 <td>Excluir</td>
 
             </tr>
-            <tr>
-                <td>Comedia</td>
-                <td>Alterar</td>
-                <td>Excluir</td>
-            </tr>
-            <tr>
-                <td>Drama</td>
-                <td>Alterar</td>
-                <td>Excluir</td>
-            </tr>
+           {% endfor %}
             </tbody>
         </table>
+            {% else %}
+               <p>Nenhum dado cadastrado</p>
+            {% endif %}
         </span>
     </div>
 
