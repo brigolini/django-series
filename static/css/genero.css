@@ -39,6 +39,21 @@ form label {
     font-size: 1em;
 }
 
+.list-button {
+    border: none;
+    border-radius: 5px;
+    padding: 2px 10px;
+    font-size: 1em;
+}
+
+.apagar-button {
+    background: mediumslateblue;
+}
+
+.editar-button {
+    background: darkseagreen;
+}
+
 .enviar:hover {
     color: white;
     background: #00a293;

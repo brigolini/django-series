@@ -29,8 +29,9 @@
             {% for genero in genero_records %}
             <tr>
                 <td>{{genero.descricao}}</td>
-                <td><button onclick="deleteItem({{genero.id}})">Alterar</button></td>
-                <td>Excluir</td>
+                <td><button class="list-button editar-button" onclick="updateItem({{genero.id}})">Alterar</button></td>
+                <td><button class="list-button apagar-button" onclick="deleteItem({{genero.id}})">Excluir</button></td>
+
 
             </tr>
            {% endfor %}
@@ -50,7 +51,7 @@
             <!--<input type="text" id=genero class="input-padrao" required>-->
 
 
-            <input type="submit" value="Enviar" class="enviar-button">
+            <input type="submit" id="submit-button" value="Enviar" class="enviar-button">
 
 
         </form>
@@ -70,8 +71,13 @@
             method: 'DELETE',
             mode: 'same-origin'
         }).then(function(response) {
-            console.info(response.status);
+            location.replace("/genero")
+           //alert("Informação apagada com sucesso");
         });
+    }
+
+    function updateItem(id) {
+        location.replace("/genero/update/"+id)
     }
 </script>
 

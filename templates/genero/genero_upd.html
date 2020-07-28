@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="uf-8">
+    <title>IGTIFlix</title>
+    <link href="{% static 'css/reset.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/menu.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/genero.css' %}" rel="stylesheet" type="text/css">
+
+
+</head>
+<body>
+{% include "../menu.html" %}
+<main>
+    <div class="conteiner-center">
+        <form onsubmit="/genero" id="form-genero" method="post">
+
+            {{form}}
+            {% csrf_token %}
+            <input type="submit" id="submit-button" value="Enviar" class="enviar-button">
+
+
+        </form>
+    </div>
+
+
+</main>
+
+<script>
+
+
+    function updateItem(id) {
+        window.history.go("/genero/update/"+id)
+        //location.replace();
+/*
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        const request = new Request(
+        "/genero/update/"+id,
+        {headers: {'X-CSRFToken': csrftoken}}
+        );
+        fetch(request, {
+            method: 'put',
+            mode: 'same-origin'
+        }).then(function(response) {
+            location.replace("/genero/update")
+           //alert("Informação apagada com sucesso");
+        });
+*/
+    }
+</script>
+
+</body>
+</html>
