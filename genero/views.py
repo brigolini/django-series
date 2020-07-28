@@ -1,3 +1,4 @@
+from django.http import HttpResponseNotAllowed
 from django.shortcuts import render
 
 from . import forms
@@ -5,8 +6,6 @@ from . import models
 
 
 def cadastro(request):
-    print("insert")
-    print(request.method);
     form = forms.GeneroForm()
     if request.method == 'POST':
         form = forms.GeneroForm(request.POST)
@@ -22,12 +21,15 @@ def cadastro(request):
 
 
 def delete(request, id):
-    print("delete")
-    models.Genero.objects.filter(id=id).delete()
-    form = forms.GeneroForm()
-    generos_list = models.Genero.objects.order_by('descricao')
-    data_dict = {"genero_records": generos_list, 'form': form}
-    return render(request, 'genero/genero.html', data_dict)
+    try:
+        models.Genero.objects.filter(id=id).delete()
+        form = forms.GeneroForm()
+        generos_list = models.Genero.objects.order_by('descricao')
+        data_dict = {"genero_records": generos_list, 'form': form}
+        return render(request, 'genero/genero.html', data_dict)
+    except:
+
+        return HttpResponseNotAllowed();
 
 
 def update(request, id):

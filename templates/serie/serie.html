@@ -15,22 +15,22 @@
 <main>
     <div class="conteiner-center">
         <span>
-            {% if genero_records %}
+            {% if serie_records %}
         <table>
             <thead>
             <tr>
-                <th>Genero</th>
+                <th>Série</th>
                 <th>Clique para alterar</th>
                 <th>Clique para excluir</th>
             </tr>
             </thead>
 
             <tbody>
-            {% for genero in genero_records %}
+            {% for serie in serie_records %}
             <tr>
-                <td>{{genero.descricao}}</td>
-                <td><button class="list-button editar-button" onclick="updateItem({{genero.id}})">Alterar</button></td>
-                <td><button class="list-button apagar-button" onclick="deleteItem({{genero.id}})">Excluir</button></td>
+                <td>{{serie.nome}}</td>
+                <td><button class="list-button editar-button" onclick="updateItem({{serie.id}})">Alterar</button></td>
+                <td><button class="list-button apagar-button" onclick="deleteItem({{serie.id}})">Excluir</button></td>
 
 
             </tr>
@@ -44,20 +44,15 @@
     </div>
 
     <div class="conteiner-center">
-        <form onsubmit="/genero" id="form-genero" method="post">
+        <form onsubmit="/serie" id="form-serie" method="post">
 
             {{form}}
             {% csrf_token %}
-            <!--<input type="text" id=genero class="input-padrao" required>-->
-
 
             <input type="submit" id="submit-button" value="Enviar" class="enviar-button">
 
 
         </form>
-    </div>
-    <div class="conteiner-center">
-        {{ msg }}
     </div>
 
 
@@ -67,24 +62,19 @@
     function deleteItem(id) {
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         const request = new Request(
-        "/genero/delete/"+id,
+        "/serie/delete/"+id,
         {headers: {'X-CSRFToken': csrftoken}}
         );
         fetch(request, {
             method: 'DELETE',
             mode: 'same-origin'
         }).then(function(response) {
-            if(response.status===500){
-                alert("Não foi possível excluir. Gênero em uso.");
-            } else{
-                location.replace("/genero")
-            }
-
-        })
+            location.replace("/serie")
+        });
     }
 
     function updateItem(id) {
-        location.replace("/genero/update/"+id)
+        location.replace("/serie/update/"+id)
     }
 </script>
 
