@@ -29,7 +29,7 @@
             {% for genero in genero_records %}
             <tr>
                 <td>{{genero.descricao}}</td>
-                <td>Alterar</td>
+                <td><button onclick="deleteItem({{genero.id}})">Alterar</button></td>
                 <td>Excluir</td>
 
             </tr>
@@ -43,14 +43,14 @@
     </div>
 
     <div class="conteiner-center">
-        <form onsubmit="/genero" method="post">
+        <form onsubmit="/genero" id="form-genero" method="post">
 
-                {{form}}
-                {% csrf_token %}
-                <!--<input type="text" id=genero class="input-padrao" required>-->
+            {{form}}
+            {% csrf_token %}
+            <!--<input type="text" id=genero class="input-padrao" required>-->
 
 
-                <input type="submit" value="Enviar" class="enviar-button">
+            <input type="submit" value="Enviar" class="enviar-button">
 
 
         </form>
@@ -59,7 +59,21 @@
 
 </main>
 
+<script>
+    function deleteItem(id) {
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        const request = new Request(
+        "/genero/delete/"+id,
+        {headers: {'X-CSRFToken': csrftoken}}
+        );
+        fetch(request, {
+            method: 'DELETE',
+            mode: 'same-origin'
+        }).then(function(response) {
+            console.info(response.status);
+        });
+    }
+</script>
 
 </body>
-
 </html>
